@@ -1,2 +1,2 @@
 # githubTest
-study project in bilibili 
+study JavaScript
