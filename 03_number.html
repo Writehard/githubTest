@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数值分类
+        // 整数
+        const num1 = 19;
+        // 浮点数
+        const num2 = 13.9;
+        //最大值
+        const maxN = Number.MAX_VALUE
+        // 最小值
+        const minN = Number.MIN_VALUE
+        // 如果值超过最大值会返回 Infinity
+        console.log(typeof Infinity)
+        // 注意返回的是number类型
+        // NaN是一个特殊的数字，表示非数值 not a number
+        console.log('abc' / 18)
+        console.log('abc' * 'bcd')
+        // 返回的都是NaN
+        /*
+            总结
+               1、typeof  NaN 返回的是number
+               2、undefined 与任何值计算都是NaN.NaN不与任何值相等，包括NaN本身
+               3、isNaN()     检测一个值是否为NaN
+               */
+        // 加号的区分
+        console.log('我'+'爱'+'你')
+        console.log('我+爱+你')
+        console.log(1+2+3)
+        // 总结：如果加号两边的都是number类型，就是数字相加。否则就是连字符
+        const a = 2;
+        console.log('a'+2)
+        // 这里的a就不是变量了
+        // 隐式转换
+        console.log('2'+1)
+        console.log('3'-1)
+        // 注意- + * / %的隐式转换
+        // 1、浮点数的运算
+        console.log(0.1+0.2)
+        // 注意不要用js做精度比较高的运算。
+        /*
+            2、处理数学精度的问题
+                a、toFix()方法进行浮点数的截取
+                b、math.js
+                c、decimal.js
+        */ 
+        
+    </script>
+</body>
+</html>
