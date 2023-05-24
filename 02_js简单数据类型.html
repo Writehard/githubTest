@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = 'zhe';
+        var num = 19;
+        var bol = true;
+        var obj = {};
+        var zero = null;
+        var demo;
+        var val1 = str.toString()
+        var val2 = num.toString(16)
+        var val3 = bol.toString()
+        var val4 = obj.toString()
+        console.log(val1,typeof val1)
+        console.log(val2,typeof val2)
+        console.log(val3,typeof val3)
+        console.log(val4,typeof val4)
+        // 模版字符串
+        var name = '哲'
+        var age = 18
+        var banStr = `我是${name}，今年${age}岁`
+        console.log(banStr)
+        // 插入表达式
+        var num2 = 5;
+        var num3 = 6;
+        var sum = `this is ${num2+num3},not${num2*num3}`
+        console.log(sum)
+        // 可以换行
+        const result = {
+            name:'evan',
+            age:24,
+            sex:'男'
+        }
+    
+        const html = `<div>
+            <span>${result.name}</span>
+            <span>${result.age}</span>
+            <span>${result.sex}</span>
+        </div>`
+        console.log(html)
+        // 可以调用函数
+        function getUrl (){
+            return 'baidu'
+        }
+        console.log(`wwww.${getUrl()}.com`)
+    </script>
+</body>
+</html>
