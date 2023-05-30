@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 空对象
+        let obj = null;
+        console.log(obj ,typeof obj)
+        // case1:未赋值
+        let name;
+        // case2;未声明
+        console.log(typeof a)
+        // case3：函数无返回值
+        function foo() {
+        }
+        console.log(foo())
+        // case4：调用函数，未传递参数
+        function too(name) {
+            console.log(name)
+        }
+        too()
+        // 给函数设置默认值
+        function demo(name) {
+            name = name || 'wjz'
+        }
+        demo()
+        // es6
+        function test(name = 'wjz') {
+            console.log(name)
+        }
+        test('evan')
+        console.log(10 - null)
+        console.log(10 + undefined)
+    </script>
+</body>
+</html>

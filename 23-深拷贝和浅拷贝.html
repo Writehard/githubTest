@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 浅拷贝的实现方式
+        // 1、用for in实现 浅拷贝
+        const obj = {
+            name:'evanzhe',
+            age:18,
+            info:{
+                desc:'很厉害'
+            }
+        }
+        const obj2 = {}
+        //用for in 将 obj1的值拷贝给 obj2
+        for(let key in obj){
+            obj2[key] = obj[key]
+        }
+        console.log("obj2:" + JSON.stringify(obj2))
+        obj.info.desc = "永不止步"
+        console.log("obj2:" + JSON.stringify(obj2))
+        // 2、使用Object.assgin()实现浅拷贝
+        let obj3 = {};
+        Object.assign(obj3,obj2);
+
+        const obj4 = {
+            name:'evan',
+            age:19,
+            desc:"hello word"
+        }
+        const obj5 = {
+            name:'zhe',
+            age:29,
+            sex:'男'
+        }
+        let result =  Object.assign(obj4, obj5)
+        // 将obj5 追加到 obj4中，同名属性会被覆盖以源对象为准。
+        // 深拷贝的实现方式
+        // 深拷贝其实就是将浅拷贝进行递归
+        // 用 for in递归实现深拷贝
+        let obj6 = {
+            name:'evan',
+            age:18,
+            info:{
+                desc:'hello'
+            },
+            color:['red', 'green', 'blue']
+        }
+        let obj7 = {};
+        function deepCopy(newObj, oldObj){
+            for(let key in oldObj){
+                // 获取属性值 objObj[key]
+                let item = oldObj[key];
+                if(item instanceof Array){
+                    // 判断属性值是否为数组
+                    newObj[key] = [];
+                    deepCopy(newObj[key], item)
+                }else if(item instanceof Object){
+                    // 判断属性值是否为对象
+                    newObj[key] = {};
+                    deepCopy(newObj[key], item)
+
+                }else{
+                    newObj[key] = item;
+                }
+            }
+        }
+        deepCopy(obj7, obj6);
+        console.log(obj7)
+        // 使用json序列化和反序列化
+        const deepCopy2 = (obj)=>{
+            return JSON.parse(JSON.stringify(obj))
+        }
+        let obj8 = deepCopy2(obj6);
+        // 冻结对象
+        Object.freeze(obj8)
+        // 对象表示和相等的问题
+        Object.is(+0, -0)
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sayName = function(){
+                console.log(this.name);
+            }
+        }
+        const person1 = new Person('evan', 23);
+        const person2 = new Person('zhe', 24);
+        console.log(person1 instanceof Person);
+        console.log(person1 instanceof Object);
+        console.log(person2 instanceof Person);
+        console.log(person2 instanceof Object);
+        Person('evanzhe', 20)
+        window.sayName()
+        let o = new Object()
+        Person.call(o,'evanzhe', 39);
+        o.sayName()
+        console.log(window)
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function multiply(a, b){
+            return a * b
+        }
+        const result = multiply(3, 4)
+        console.log(result)
+        function createPerson(name, age) {
+            return {
+                name : name,
+                age : age,
+                sayHi:function(){
+                    console.log('Hi,my name is ' + this.name + ' and I am ' + age + ' years old.')
+                }
+            }
+        }
+        const person1 = createPerson('evan',18)
+        person1.sayHi()
+        const person2 = createPerson('zhe',23)
+        person2.sayHi()
+        function great(name) {
+            return function(){
+                console.log("Hello, " + name + '!')
+            }
+        }
+        const person3 = great('evanzhe')
+        person3()
+        function fn(){
+            
+        }
+    </script>
+</body>
+</html>

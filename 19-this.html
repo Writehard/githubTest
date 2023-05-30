@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击</button>
+    <script>
+        // const btn = document.querySelector("button")
+        // btn.onclick = function(){
+        //     console.log(this)
+        // }
+        // btn.addEventListener('click',function(){
+        //     console.log(this)
+        // })
+        // function myFunction() {
+        //     console.log(this)
+        // }
+        // myFunction()
+        // console.log(this)
+        // var obj = {
+        //     name:'evan',
+        //     sayName: function(){
+        //         console.log('hello'+ this.name)
+        //     }
+        // }
+        // obj.sayName()
+        function person() {
+            console.log(this.name)
+        }
+        var man = {
+            name:'evan'
+        }
+        Function.prototype.newCall = function(obj){
+            obj.p =this
+            obj.p()
+            delete obj.p
+        }
+        person.call(null,'zhe')
+        function fun1 (){
+            console.log(this.name)
+        }
+        function eat(a, b) {
+            console.log(`我想吃${a}+${b}`)
+        }
+        let obj = {
+            name:'evan'
+        }
+        const result = eat.bind(obj)
+        result('牛肉','包子')
+    </script>
+</body>
+</html>

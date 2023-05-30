@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            一、显示类型转换
+                1、toString()
+                    a、null和undefined没有toString方法。
+                    b、传递参数 值为number生效
+                    c、纯小数的小数点后面，如果紧跟连续6个或6个以上，那么将用e来表示。
+                2、String()
+                    a、null和undefined使用的
+                3、prompt()
+                    用户输入都会按字符串处理
+                4、Number()
+                5、parseInt()
+                    */ 
+
+       var str1 = 'wjz';
+       var num1 = 23;
+       var bol1 =  true;
+       var arr1 = [1, 2, 3];
+       var obj = {
+        name:'wjz',
+        age:23
+       }
+       var n = null;
+       var u = undefined;
+       var num2 = 0.000001;
+       var num3 = 0.0000001;
+       var num4 = 1.0000001;
+       var num5 = 0.10000001;
+       console.log(str1.toString())
+       console.log(num1.toString())
+       console.log(bol1.toString())
+       console.log(arr1.toString())
+       console.log(obj.toString())
+       console.log('@@@@@@@@@@@')
+       console.log(num2.toString())
+       console.log(num3.toString())
+       console.log(num4.toString())
+       console.log(num5.toString())
+       console.log('@@@@@@@@@@@@')
+    //    这里的常量不允许是数字
+    //    console.log(1.toString())
+       console.log(1..toString())
+       console.log(1.2.toString())
+       console.log((1).toString())
+       console.log(22.2.toString())
+       var str2 = '250';
+       var str3 = '           ';
+       var str4 = '';
+       console.log(Number(str2))
+       console.log(Number(str3))
+       console.log(Number(str4))
+       console.log(Number(true))
+       console.log(Number(null))
+       console.log(Number(undefined))
+       console.log('paseInt函数@@@@@@@@@')
+        console.log(parseInt('435345n'))
+        console.log(Boolean(NaN))
+        console.log(!!3)
+        console.log(isNaN(null))
+    </script>
+</body>
+</html>

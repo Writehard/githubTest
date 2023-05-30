@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 原型模式解决相同逻辑的函数重复定义
+        // 每个函数都会创建一个prototype属性，这个属性是一个对象，包含应该有特定的引用类型的实例共享的方法和属性
+        // 好处 ；在它上面创建的方法和属性都会被创建的实例对象所共享
+        function Person() {
+            Person.prototype.name = 'evan';
+            Person.prototype.age = 23;
+            Person.prototype.job = "software Engineer";
+            Person.prototype.sayName = function(){
+                console.log(this.name)
+            }
+        }
+        let person1 = new Person();
+        person1.sayName();
+        let person2 = new Person();
+        person2.sayName();
+        // 两种写法
+        let Rabbit = function() {}
+        Rabbit.prototype.name = 'zhe';
+        Rabbit.prototype.age = 36;
+        Rabbit.prototype.job = "eat carrot";
+        Rabbit.prototype.sayName = function(){
+            console.log(this.name);
+        }
+        const rab = new Rabbit();
+        const rab2 = new Rabbit();
+        rab.sayName()
+        rab2.sayName()
+        console.log(Rabbit.prototype.__proto__ === Object.prototype)
+        console.log(Rabbit.prototype.__proto__.constructor === Object)
+        console.log(Rabbit.prototype.__proto__)
+        // 检查person1 和person2 是否为Person的实例
+        console.log(Person.prototype.isPrototypeOf(person1))
+        console.log(Person.prototype.isPrototypeOf(person1))
+    </script>
+</body>
+</html>

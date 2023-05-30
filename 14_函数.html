@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击我</button>
+    <script>
+        const btn = document.getElementById('btn')
+        btn.onclick = function(){
+            alert('你好我是按钮')
+        }
+        let num = 1 ;
+
+        function fn1() {
+                console.log('我是函数体一中的内容')
+        }
+        function fn2() {
+                console.log('我是函数体二中的内容')
+        }
+        fn1()
+        fn2.call()
+        var obj = {
+            name:'evan',
+            sayName: function(){
+                console.log(this.name)
+            }
+        }
+            
+        // 定时器函数
+        // setInterval(function(){
+        //     num++;
+        //     console.log(num)
+        // },1000)
+        function dinnner(opts) {
+            let {chicken, beef, smail} = opts
+            console.log(`今晚吃 ${chicken}或者 ${beef} 或者 ${smail},搭配一些coke`)
+        }
+        dinnner('chicken', '牛绒', '羊排')
+        const fn3 = new Function('num1', 'num2', 'return num1 + num2')
+        console.log(fn3(1, 2))
+        const fn4 = (num1, num2)=>{
+            return num1 + num2
+        }
+        console.log(
+        fn4(5, 6)
+        )
+        function fun() {
+            
+        }
+        const bar = function(){
+                
+        }
+        
+    </script>
+</body>
+</html>

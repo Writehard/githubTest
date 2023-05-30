@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = [20, 30, 40, 50, 60, 70]
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i])
+        }
+        const arr2 = [1, 2, 3,4]
+        //一、创建数组的静态方法
+            // 1、Array.from
+            // 使用对象：类数组对象，任何可迭代的对象或者有一个length属性和可索引的结构。
+        var s = new Set().add(1).add(2).add(3).add(4)
+        var m = new Map().set([1,2],3).set([3,4])
+        const iter = {
+            *[Symbol.iterator](){
+                yield 1;
+                yield 2;
+                yield 3;
+                yield 4;
+            }
+        }
+        function getArgsArray() {
+            return Array.from(arguments)
+        }
+        console.log(Array.of([,,,]))
+        const a = ['foo', 'bar', 'baz', 'qux']
+        const aKeys = Array.from(a.keys())
+        const aValues = Array.from(a.values())
+        const aEntries = Array.from(a.entries())
+        console.log(aKeys, aValues, aEntries)
+        const arr1 = [0, 0, 0, 0, 0]
+        const arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        arr3.copyWithin(0,5)
+        const colors = ['red', 'green', 'yellow']
+        colors.push('blue')
+        console.log(colors)
+        const people = ['小明', '王五']
+        let item = people.shift()
+        people.unshift('李四', '小笨蛋', 'evan')
+        console.log(people)
+        // 定义排序函数
+        function compare(value1, value2) {
+            if(value1 < value2){
+                return 1;
+            }else if(value1 > value2){
+                return -1;
+            }else{
+                return 0;
+            }
+        }
+        var arr4 = [1, 6, 3, 2, 7, 10, 8]
+        arr4.sort(compare)
+        arr4.reverse()
+        const color = ['red', 'pink', 'green']
+        const  color2 = color.concat('yellow',['black', 'blue'])
+        const color3 =color.splice(1,1,'yellow', 'black')
+        console.log(color3, color)
+        const arr5 = [0, 1, 2, 3, 4, 4, 5]
+        console.log(arr5.indexOf(4))
+        console.log(arr5.lastIndexOf(4))
+        console.log(arr5.includes(4))
+        const people2 = [
+            {
+                name:'matt',
+                age:27
+            },
+            {
+                name:'evan',
+                age:25
+            }
+        ]
+        const arr6 = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+        let everyResult = arr6.map((item, index, array)=> item * 2)
+        console.log(everyResult)
+</script>
+</body>
+</html>

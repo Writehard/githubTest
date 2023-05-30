@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let msg = 'notice';
+        switch(msg){
+            case 'no':
+                console.log('提示');
+            break;
+            case 'notice':
+                console.log('警告');
+            break;
+            default:
+                console.log('error');
+            break;        
+        }
+        let num = 5;
+        switch (num){
+            default:
+                console.log('我是defalut语句');
+            case 2:
+                console.log('第二个呵呵' + num)
+            case 3:
+                console.log('第三个呵呵' + num);
+            break;
+            case 4:
+                console.log('第四个呵呵' + num)
+            break;
+            }
+            // do-while语句
+            let num2 = 0;
+            do {
+                num2 += 2
+            }while(num2 < 10);
+            console.log(num2)
+            function demo (){
+                return ''
+            }
+            // for (;;){
+            //     demo()
+            // }
+            let obj = {
+               name:'哲',
+               age:19,
+               sex:'男'
+            }
+            for (const key in obj) {
+                console.log(key)
+            }
+            let arr =[11,12,13,14,15,16,17,18];
+            for (const el of arr) {
+                console.log(el)
+            }
+            let number = 0;
+            for (let i = 0;i < 10; i++){
+                console.log(num)
+                if(i % 5 == 0){
+                    break;
+                }
+                num++;
+            }
+            console.log(num)
+    </script>
+</body>
+</html>

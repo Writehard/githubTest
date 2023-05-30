@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            // const obj = {
+            //     name:'evan',
+            //     age:19,
+            //     sex:'男'
+            // }
+            // delete obj.age
+
+            // for (const key in obj) {
+            //     console.log(obj[key])
+            // }
+            // let obj = {}
+            // Object.defineProperty(obj, 'name',{
+            //     value:'evan',
+            //     enumerable:true,
+            //     configurable:true,
+            //     writable:true
+            // })
+            // console.log(obj)
+            // let book = {
+            //     year_:2017,
+            // }
+            // Object.defineProperty(book, "year",{
+            //     get(){
+            //         return this.year_
+            //     },
+            //     set(newVlaue){
+            //         if(newVlaue > 2017){
+            //             this.year_ = newVlaue
+            //         }
+            //     }
+            // })
+            // Object.defineProperties(book, {
+            //     price_:{
+            //         value:29,
+            //         writable:true
+            //     },
+            //     edtion:{
+            //         value:0,
+            //     },
+            //     price:{
+            //         get(){
+            //         return this.price_
+            //     },
+            //     set(newVlaue){
+            //         if(newVlaue > 29){
+            //             this.price_ = newVlaue
+            //             this.edtion = newVlaue - 29
+            //         }
+                        
+            //     }
+            //     }
+            // })
+            let book = {};
+            Object.defineProperties(book,{
+                year_:{
+                    value:2017
+                },
+                edtion:{
+                    value:1
+                },
+                year:{
+                    get:function(){
+                        return this.year_
+                    },
+                    set:function(newVlaue){
+                        if(newVlaue > 2017){
+                            this.year_ = newVlaue;
+                            this.edtion += newVlaue - 2017
+                        }
+                    }
+                }
+            })
+            let des = Object.getOwnPropertyDescriptors(book)
+            console.log(des)
+            let dest, src, result;
+            dest = {}
+            src = {
+                id:'src'
+            }
+            // 一个源对象
+            result = Object.assign(dest, src)
+            // 多个源对象
+            result = Object.assign(dest,{a:'foo'},{b:'bar'})
+            console.log(result)
+    </script>
+</body>
+</html>

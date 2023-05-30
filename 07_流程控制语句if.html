@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 健身指数
+        // 第一步获取身高
+        // const height = parseFloat(prompt('请输入你的身高,单位是m'));
+        // const weight = parseFloat(prompt('请输入你的体重，单位是kg'));
+        // 第二部计算bmi指数
+        // const BMI = weight / Math.pow(height,2)
+        // 第三部 if判断
+        // console.log(height, weight, BMI)
+        // if(BMI<18.5){
+        //     alert('过轻')
+        // }else if(BMI < 24.9999){
+        //     alert('身材不错，继续保持')
+        // }else if(BMI < 27.999999){
+        //     alert('微胖，可以健身一下')
+        // }else if(BMI < 32){
+        //     alert('体重偏高，应该注意饮食，加强锻炼')
+        // }
+        // 加油站优惠
+        // 第一步获取加油编号
+        const bianhao = parseFloat(prompt('输入汽油编号,97或92'));
+        if(bianhao == 97||bianhao == 92 ){
+            const cap = parseFloat(prompt('您想加多少升'))
+        // 第二步判断
+        if(bianhao == 92){
+            if(cap >= 20){
+                const price = 5.9 * cap;
+                alert(`价格为${price}`)
+            }else{
+                const price = 6 * cap
+                alert(`价格为${price}`)
+            }
+        }else if (bianhao == 97){
+            if(cap >= 20){
+                const price = 6.95 * cap;
+                alert(`价格为${price}`)
+            }else {
+                const price = 7 * cap;
+                alert(`价格为${price}`)
+            }
+        }else {
+           
+        }
+        }else {
+            alert('不好意思，没有您需要的汽油')
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 求一个函数的阶乘
+        // function factorial(num) {
+        //     let result = 1;
+        //     for (let i = 1 ; i <= num; i++) {
+        //         result *= i;
+        //     }
+        //     return result;
+        // }
+        // console.log(factorial(5))
+        // 使用递归
+        function fac(num) {
+            if(num == 1 || num ==0 ){return 1}
+        return num * fac(num - 1)             
+        }
+        // x题目：喇叭花数是一个**三位数**，其每一位数字的阶乘之和恰好等于它本身，即`abc＝a! + b! + c!`，其中abc表示一个三位数。请找出所有的喇叭花数。
+        // 三位数 100 -999
+        for (let i = 100; i <= 999; i++) {
+            // 将数字转换成字符串
+            const i_str = i.toString();
+            // abc表示百分位- 十分位- 个位
+            const a = Number(i_str[0]);
+            const b = Number(i_str[1]);
+            const c = Number(i_str[2]);
+                if(fac(a) + fac(b) + fac(c) == i){
+                    console.log(i); 
+                }
+            }
+            // 斐波那契数列
+            function feibo(num) {
+                if(num == 0 || num ==1)return 1;
+                return feibo(num-1) + feibo(num - 2)
+            }
+            for (let i = 0; i < 15; i++) {
+                    console.log(feibo(i))                
+            }
+          
+    </script>
+</body>
+</html>

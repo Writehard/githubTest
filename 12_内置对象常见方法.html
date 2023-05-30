@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num = 9.00000000009;
+        // 生成随机数
+        let num2 = (Math.random()*4)
+        function getRandom (min, max){
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+        console.log(Number.isInteger(num))
+        console.log(getRandom(0,9))
+        var url = 'https://www.baidu.com/wjz/'
+        var x = encodeURIComponent(url)
+        console.log(decodeURIComponent(x))
+        // 写法一不传参数
+        const date1 = new Date()
+        // 写法二传递参数
+        const date2 = new Date('2020/02/17 21:00:00')
+        console.log(date1)
+        const arr = ['小明']
+        const arr2 = new Array(1, 2, 3, 4)
+        console.log(arr[0])
+    </script>
+</body>
+</html>

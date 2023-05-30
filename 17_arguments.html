@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getArg(){
+            let sum = 0
+            for (let i = 0; i < arguments.length; i++) {
+                sum += arguments[i]
+            }
+            return sum;
+        }
+        console.log(getArg(1, 2, 3, 4, 5))
+        function fn() {
+            console.log(arguments.callee === fn);
+        }
+        fn();
+        // 1、不确定能传入多少参数
+
+        function getMaxValue() {
+            var max = arguments[0];
+            for (let i = 0; i < arguments.length; i++) {
+                if(max < arguments[i]){
+                    max = arguments[i]
+                }
+            }
+            return max
+        }
+        console.log(getMaxValue(1, 2, 3, 4))
+    </script>
+</body>
+</html>

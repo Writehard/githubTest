@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、indexOf -lastIndexOf
+        // 参数:需查询的字符串，返回索引值，从左往右-从右往左
+        let str1 = 'evanzhe'
+        let index = str1.indexOf('e')
+        let index2 = str1.lastIndexOf('e')
+        console.log(index2)
+        console.log(index)
+        // 2、search 
+        // 参数:想要查询字符串
+        // 参数：正则表达式
+        let index3 = str1.search('e')
+        let index4 = str1.search(/e/i)
+        console.log(index3)
+        console.log(index4)
+        const str2 = 'chirs'
+        let index5 = str1.includes('h')
+        console.log(index5)
+        const str3 = 'abcdefg'
+        let index6 = str3.startsWith('d',4)
+        let index7 = str3.endsWith('g')
+        // 6、charAt
+        let index8 = str3.charAt(1)
+        // 遍历字符串
+        for (let i = 0; i < str3.length; i++) {
+            console.log(str3[i])
+            
+        }
+        let index9 = str3.charCodeAt(1)
+        console.log(index9,'@@@@@@@')
+        let nStr = str1.slice(4)
+        console.log(nStr, str1)
+        let nStr2 = str1.substring(4)
+        console.log(nStr2)
+        let nStr3 = str1.substr(4)
+        var str4 = String.fromCharCode(72)
+        var str5 = String.fromCharCode(20013)
+        const result = str2.concat(str3)
+        const strArr = str2.split(',')
+        let str6 = "evan-chirs-zhe-weijanzhe"
+        const strArr2 = str6.split('|')
+        let phone = '18104268775'
+        let mix_phone = phone.slice(0, -4) + '*'.repeat(4)
+        console.log(str2.replace('c','z'),str2)
+    </script>
+</body>
+</html>

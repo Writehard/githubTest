@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>原型对象</title>
+</head>
+<body>
+    <script>
+        function Person() {
+            Person.prototype.name = 'evan';
+            Person.prototype.age = 23;
+            Person.prototype.job = "software Engineer";
+            Person.prototype.sayName = function(){
+                console.log(this.name)
+            }
+        }
+        let person1 = new Person();
+        let person2 = new Person();
+        // isPrototype 检测person1 person2 内部都有链接指向Person.prototype
+        console.log(Person.prototype.isPrototypeOf(person1));
+        console.log(Person.prototype.isPrototypeOf(person2));
+        // Object.getPrototypeOf返回参数的内部特性[[prototype]] === __proto__ 返回一个Person.prototype
+        console.log(Object.getPrototypeOf(person1) == Person.prototype);
+        console.log(Object.getPrototypeOf(person1));
+        let biped = {
+            numLegs:2
+        };
+        // Object.create指定原型 -- 可以实现浅拷贝
+        // let person3 = Object.create(biped);
+        // console.log(person3);
+        // person3.name = 'evanzhe';
+        // person3.numLegs = 3
+        // console.log(person3.numLegs);
+        // console.log(person3.name);
+        // console.log(Object.getPrototypeOf(person3) === biped);
+        // console.log(biped);
+        // console.log(person2.__proto__.constructor)
+        // 注：实例无法修改原型对象的属性和方法
+        person1.name = 'nick';
+        // 检测当前属性是否在实例对象上 
+        console.log(person1.hasOwnProperty('name'))
+        // 检测属性是否在原型对象上
+        console.log(name in person1);
+        // console.log(hasPrototypeProperty(person1, "name"))
+        // 可枚举实例属性   
+       // Object.keys()
+        //返回包含所有属性和方法的数组    
+        let keys = Object.keys(Person.prototype);
+        let p1kkey = Object.keys(person1);
+        console.log(keys);
+        console.log(p1kkey);
+        // 如果想列出所有实例属性 -constructor
+        let allKey = Object.getOwnPropertyNames(Person.prototype)
+        console.log(allKey)
+        // 针对符号的方法 Object.getOwnPropertySymbols
+        let k1 = Symbol('k1'),
+            k2 = Symbol("k2");
+        let o = {
+            [k1]:'k1',
+            [k2]:"k2"
+        }
+        console.log(Object.getOwnPropertySymbols(o));
+        // for-in Object.keys(); 枚举顺序是不确定的
+        //getOwnPropertyNames-getOwnPropertySymbols-assign 枚举顺序是确定的，按照数字键- 字符串和符号键
+        const oo = {
+            foo:'bar',
+            baz:1,
+            qux:{}
+        }
+        // 迭代对象属性- 返回的都是数组
+        console.log(Object.values(oo))
+        console.log(Object.entries(oo))
+        // 简化Person
+        function Dog() { }
+        Dog.prototype = {
+            name:'jerry',
+            age:3,
+            job:'eat',
+            sayName(){
+                console.log(this.name);
+            }
+        }
+        let jerry = new Dog();
+        console.log(jerry instanceof Object);
+        console.log(jerry instanceof Dog);
+        console.log(jerry.constructor == Dog);
+        console.log(jerry.constructor == Object);
+        // 恢复 constructor
+        Object.defineProperty(Dog.prototype,constructor,{
+            enumerable:false,
+            value:Dog
+        })
+        function Cat() {
+        }
+        const miss = new Cat()
+        Cat.prototype = {
+            constructor:Cat,
+            name:'miss',
+            age:20,
+            job:'play game',
+            sayName(){
+                console.log(this.name);
+            }
+        }
+        const tom = new Cat()
+        tom.sayName()
+    </script>
+</body>
+</html>
