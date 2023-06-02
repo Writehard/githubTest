@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function SuperType(name) {
+            this.name = name
+            this.colors = ["red", "green"]
+        }
+        SuperType.prototype.sayName = function(){
+            console.log(this.name);
+        }
+        function SubType(name, age) {
+            // 传递参数
+            SuperType.call(this, name);
+            this.age = age;
+        }
+        function object(o) {
+            function F() {}
+            F.prototype = o;
+            return new F();
+        }
+        function inheritPrototype(SuperType, SubType) {
+            // 创建对象
+            let prototype = object(SuperType.prototype);
+            // 增强对象
+            prototype.constructor = SubType;
+            // 赋值对象
+            SubType.prototype = prototype;
+        }
+        inheritPrototype(SuperType, SubType)
+        SubType.prototype.sayAge = function () {
+            console.log(this.age)
+        }
+        const person1 = new SubType('evan',28);
+        const person2 = new SubType('zhe',19);
+        person1.colors.push('brow');
+        console.log(person1.colors)
+        console.log(person1 instanceof SubType);
+        console.log(person1 instanceof SuperType);
+        console.log(person1 instanceof Object)
+    </script>
+</body>
+</html>

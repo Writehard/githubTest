@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // class Person {
+        //     // 构造器函数
+        //     constructor(){
+        //         // 添加到this的所有内容都会存在于不同的实例上
+        //         this.locate = () => console.log('instance', this)
+        //     }
+        //     // 定义在类的原型上
+        //     locate(){
+        //         console.log('prototype', this)
+        //     }
+        //     // 定义在类的本身
+        //     static locate() {
+        //         console.log('class', this)
+        //     }
+        // }
+        // let p = new Person()
+        // p.locate();
+        // Person.prototype.locate();
+        // Person.locate();
+        // 应用 - 静态方法适合作为实例工厂
+        // class Person {
+        //     constructor(age) {
+        //         this.age_ = age;
+        //     }
+        //     sayAge(){
+        //         console.log(this._age);
+        //     }
+        //     static create(){
+        //         // 使用随机年龄
+        //         return new Person(Math.floor(Math.random()*100))
+        //     }
+        // }
+        // console.log(Person.create());
+        class Person {
+            sayName(){
+                console.log(`${Person.greating} ${this.name}`)
+            }
+        }
+        Person.greating = 'My name is';
+        Person.prototype.name = 'jake'
+        let p = new Person()
+        p.sayName()
+    </script>
+</body>
+</html>

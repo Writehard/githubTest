@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // class Animal {}
+        // class Person {
+        //     constructor(name){
+        //         console.log(arguments.length);
+        //         this.name = name || null
+        //     }
+        // }
+        // class Vegetable {
+        //     constructor(){
+        //         this.color = "orange"
+        //     }
+        // }
+        // let a = new Animal();
+        // let c = new Vegetable();
+        // console.log(c.color)
+        // let p1 = new Person();
+        // let p2 = new Person('evan');
+        // let p3 = new Person('zhe');
+        // console.log(p1, p2, p3);
+        // 类创建实例必须使用new关键字 - 和普通的构造函数类似
+            // class Person {
+            //     constructor(){
+            //         this.name = new String('jack');
+            //         this.sayName=()=>console.log(this.name);
+            //         this.nickname = ['jake', 'j-dog']
+            //     }
+            // }
+            // let p1 = new Person(),
+            //     p2 = new Person();
+            // p2.sayName();
+            // p1.sayName();
+            // console.log(p1.name === p2.name);
+            // console.log(p1.sayName === p2.sayName);
+            // console.log(p1.nickname === p2.nickname);
+            // p1.name = p1.nickname[0]
+            // p2.name = p2.nickname[1]
+            // p2.sayName();
+            // p1.sayName();
+            class Dog {
+                constructor(){
+                    // 添加到this的所有内容都会存在不同的实例上
+                    this.locate = () => {
+                        console.log('instance')
+                    }
+                }
+                // 在类块上定义的所有内容都会定义在类的原型上
+                locate(){
+                    console.log('prototype')
+                }
+            }
+            let d = new Dog();
+            d.locate()
+            // 注意 - 可以把方法定义在构造函数中或者类块中，但不能在类块中给原型添加原始值或对象作为成员
+            // class Cat {
+            //     name:"evan"
+            // }
+            // 错误示范
+            // 类方法等同于对象属性，因此可以使用字符串、 符号或计算的值作为键
+            const symbolKey = Symbol('symbolKey');
+            class Cat {
+                stringKey(){
+                    console.log('invoked stringKey')
+                }
+                [symbolKey](){
+                    console.log('invoked symbolKey')
+                }
+                ['computed' + 'Key'](){
+                    console.log('invoked computedKey')
+                }
+            }
+            let c = new Cat()
+            c.stringKey()
+            c[symbolKey]()
+            c.computedKey()
+            // 类定义也支持获取和设置访问器 语法跟普通对象是一样的
+            class Rabbit {
+                get(){
+                    return this._name;
+                }
+                set(newVal){
+                    this._name = newVal;
+                }
+            }
+            let r = new Rabbit()
+            r.name ='jake'
+            console.log(r.name)
+    </script>
+</body>
+</html>

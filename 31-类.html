@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // es6类表面上支持面向对象编程，但实际上他背后使用的扔是原型和构造函数
+        // 1、类声明
+        class Person {};
+        // 2、类表达式
+        const Animal = class {}
+        // 注函数存在提升，而类不存在
+        console.log(fun)
+        var fun = function () {
+            
+        }
+        console.log(fun);
+        console.log("分割-----");
+        // 提升
+        console.log(fun2);
+        function fun2() {
+            
+        }
+        console.log(fun2);
+        console.log("分割-----");
+        // console.log(classFun);
+        // var classFun = class {};
+        // console.log(classFun);
+        console.log("分割-----");
+        console.log(class2Fun);
+        class class2Fun {}
+        console.log(class2Fun);
+        // 3、类的构成 类可以包含构造函数方法、实例方法、获取函数、设置函数和静态方法 空类定义也是有效的
+        // 空类
+        class Foo {}
+        // 有构造函数的类
+        class Bar {
+            constructor(){
+
+            }
+        }
+        // 有获取函数的类
+        class Baz {
+            get myBaz(){}
+        }
+        // 静态方法
+        class Qux {
+            static myQux(){
+
+            }
+        }
+
+    </script>
+</body>
+</html>

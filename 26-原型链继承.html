@@ -31,6 +31,7 @@
         function SubType() {
             SuperType.call(this)
         }
+        // 解决了原型包含引用值导致的继承问题
         let instance = new SubType()
         instance.colors.push('brow');
         console.log(instance.colors)

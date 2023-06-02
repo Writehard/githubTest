@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // es6原生支持类继承机制 - 原理还是原型链
+        // class Vehicle {};
+        // class Bus extends Vehicle{};
+        // let b = new Bus();
+        // console.log(b instanceof Bus);
+        // console.log(b instanceof Vehicle);
+        function Person() {
+        }
+        // 继承普通函数
+        class Enginner extends Person {};
+        let p = new Enginner();
+        console.log(p instanceof Person);
+        console.log(p instanceof Enginner);
+        class Vehicle {
+            identifyPrototype(id){
+                console.log(id, this)
+            }
+            static identifyClass(id){
+                console.log(id, this)
+            }
+        };
+        class Bus extends Vehicle{};
+        let v = new Vehicle();
+        let b = new Bus();
+        b.identifyPrototype('bus');
+        v.identifyPrototype('vehicle');
+        Bus.identifyClass('bus');
+        Vehicle.identifyClass('vehicle')
+    </script>
+</body>
+</html>

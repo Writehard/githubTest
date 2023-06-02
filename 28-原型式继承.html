@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>原型式继承</title>
+</head>
+<body>
+    <script>
+        // // 原型式继承
+        // function object(o) {
+        //     function F() {}
+        //     F.prototype = o;
+        //     return new F();
+        // }
+        // let person = {
+        //     name:"evanzhe",
+        //     friends:["shelby", "Court", "van"]
+        // }
+        // let anotherPerson = object(person);
+        // anotherPerson.name = "Greg";
+        // anotherPerson.friends.push("Rob");
+        // let yetAnotherPerson = object(person);
+        // yetAnotherPerson.name = "linda";
+        // yetAnotherPerson.friends.push("Barbie");
+        // console.log(person.friends)
+        // object.create 接收两个参数 -作为对象原型的对象，以及给新定义额外属性的对象
+        let person = {
+            name:"evanzhe",
+            friends:["shelby", "Court", "van"]
+        }
+        let anotherPerson = Object.create(person);
+        anotherPerson.name = "Greg";
+        anotherPerson.friends.push("rob");
+        let yetAnotherPerson = Object.create(person);
+        yetAnotherPerson.name = "Linda";
+        yetAnotherPerson.friends.push("Barbie");
+        console.log(anotherPerson.name, yetAnotherPerson.name)
+        // 添加第二个参数
+        let anotherPerson = Object.create(person, {
+            name:{
+                value:"Greg"
+            }
+        })
+        // 这样添加的属性会遮蔽原型上的同名属性
+    </script>
+</body>
+</html>
