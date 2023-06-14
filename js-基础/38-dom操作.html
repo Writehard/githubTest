@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>first page </title>
+</head>
+<body>
+    <div id="box">
+    <h2 id="title">我是标题党</h2>
+        <ul id="list">
+            <li>
+                <span id="text">你好, evanzhe</span>
+            </li>
+        </ul>
+        <ol id="olist" type="I">
+            <li>
+                <p id="ptext">我是 john wick</p>
+            </li>
+        </ol>
+        <img src="" alt="" name="myImage"><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt="">
+    </div>
+
+    <script>
+        // childNodes- nodelist - parentNode
+        const box = document.getElementById('box');
+        // const box = document.getElementsByTagName("div")
+        const list = document.getElementById('list');
+        // const slist = document.getElementById('olist');
+        // const text = document.getElementById('text');
+        // const ptext = document.getElementById('ptext');
+        // const boxArr = Array.from(box.childNodes);
+        const title = document.getElementById('title')
+        // 使用appendChild添加的节点会成为box的lastChild
+        let resultNode = box.appendChild(title);
+        // console.log(resultNode == title);
+        // console.log(box.lastChild == resultNode);
+        // 插入
+        const newNode = document.createElement('h1');
+        // let resultNode2 = title.insertBefore(newNode,null)
+        // let resultNode3 = box.insertBefore(newNode,box.lastChild)
+        // 删除
+        const rmFirstChild = box.removeChild(box.lastChild)
+        // 克隆节点
+        let deeplist = list.cloneNode(true);
+        console.log(deeplist);
+        // Document 是 HTMLDocument的实例 表示整个页面 document 是window的属性
+        // 特征
+        //nodeType -9
+        //nodename - #document
+        //nodevalue - null
+        //parentnode = null
+        //ownerDocument null
+        //document.documentElement -- 包括html在内的所有元素
+        let html = document.documentElement;
+        let body = document.body
+        console.log(body);
+        let doctype = document.doctype
+        console.log(doctype);
+        let originTittle = document.title
+        originTittle = 'replace page'
+        // url
+        let url = document.URL
+        // domain
+        let domain = document.domain
+        // 来源
+        let referrer = document.referrer
+        console.log(referrer);
+        console.log(domain);
+        let images = document.getElementsByTagName("img");
+        // 返回的是html的HTMLCollection
+        //HTMLCollection 
+        let myImage = images.namedItem('myImage')
+        console.log(myImage);
+        let allElement = document.getElementsByTagName('*')
+        console.log(allElement);
+    </script>
+</body>
+</html>

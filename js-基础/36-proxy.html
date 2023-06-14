@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let target = {
+        //     name:'Wick',
+        //     age:23,
+        //     sex:'男'
+        // };
+        // let handle = {
+        //     get(){
+        //         return 'handle override'
+        //     }
+        // };
+        // const proxy = new Proxy(target, handle);
+        // // name属性会访问同一个值
+        // console.log(target.name)
+        // console.log(proxy.name)
+        // // 修改proxy
+        // proxy.name = 'evan';
+        // console.log(target.name);
+        // console.log(proxy.name);
+        // // 修改target
+        // target.name = 'zhe';
+        // console.log(target.name);
+        // console.log(proxy.name);
+        // console.log(proxy);
+        // // hasOwnProperty方法在两个地方
+        // console.log(target.hasOwnProperty('name'));
+        // console.log(proxy.hasOwnProperty('name'));
+        // 注意proxy.prototype = undefined 
+        // 不能使用 instanceof 会报错
+        // console.log(proxy instanceof Proxy);
+        // console.log(target instanceof Proxy);
+        // 1、捕获器参数
+        // let handle = {
+        //     // 目标对象 属性 代理对象
+        //     // get(trapTarget, property, recevier){
+        //         // console.log(trapTarget === target);
+        //         // console.log(property);
+        //         // console.log(recevier === proxy);
+        //         // console.log(recevier);
+        //         // console.log(trapTarget);
+        //         // 重建被捕获的方法
+        //         // return trapTarget[property]
+        //         // 使用原始方法 Reflect 反射 api
+        //         // return Reflect.get(...arguments) 
+        //     // }
+        //     // 简写
+        //     get:Reflect.get
+        // };
+        // const target = {
+        //     foo:'bar'
+        // };
+        // const proxy = new Proxy(target, handle);
+        // console.log('proxy=>>>>>>',proxy.foo)
+        // console.log("target====>",target.foo);
+        // console.log('target====>',target['foo']);
+        // console.log('proxy===>>',proxy['foo']);
+        // console.log('proxy====>',Object.create(proxy)['foo'])
+        // console.log('target====>',Object.create(target)['foo']);
+        // console.log(proxy.foo);
+        // 整体简化
+            // const target = {
+            //     name:'wick'
+            // }
+            // const proxy = new Proxy(target, Reflect);
+            // console.log(target.name);
+            // console.log(proxy.name);
+            const target = {
+                name:'wick',
+                age:19
+            }
+            // 捕获器
+            let handle = {
+                get(trapTarget, property, recevier){
+                    let desc = '';
+                    if(property === 'name'){
+                        desc = '!!!!'
+                    }
+                    return Reflect.get(...arguments) 
+                }
+            };
+            const proxy = new Proxy(target, handle)
+            console.log(proxy.name);
+            console.log(target.name);
+            console.log(typeof target.age);
+            console.log(typeof proxy.age);
+            //捕获器的不变式
+            
+    </script>
+</body>
+</html>

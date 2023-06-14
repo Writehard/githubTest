@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="shenti">
+    <div id="box">
+        <p>我是一段文字</p>
+    </div>
+    <ul id="list">
+        <li>
+            <p>我是node例子</p>
+        </li>
+    </ul>
+    <script>
+        const box = document.getElementById("box");
+        
+        // if(box.nodeType == Node.ELEMENT_NODE){
+        //     alert("NODE is an element");
+        // }
+        // 检测节点类型
+            // if(box.nodeType == 1){
+            //     value = box.nodeName
+            //     console.log(value);
+            // }
+        // 节点类型
+        // console.log(box.childNodes)
+        let firstChild = box.childNodes[0];
+        let secondChild = box.childNodes.item(1);
+        // console.log(secondChild)
+        // 将chilNodes类数组转换成数组
+        // let arrayOfNodes = Array.prototype.slice.call(box.childNodes,0);
+        let arrayOfNodes = Array.from(box.childNodes)
+        // console.log(arrayOfNodes);
+        // parentNOde
+        // console.log(box.previousSibling)
+        // console.log(box.nextSibling);
+        console.log('-------------------@----------');
+        const list = document.getElementById('list');
+        console.log('list-chinodes======>',list.childNodes)
+        console.log('item==>',list.childNodes.item(1));
+        console.log('list-firstchild======>',list.firstChild);
+        console.log('list-lastchilde=====>',list.lastChild);
+    </script>
+</body>
+</html>

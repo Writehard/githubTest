@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // super 关键字引用它们的原型 - 只能在派生类中使用 仅限于类构造函数中 、实例方法 、 静态方法内部 
+        class Vehicle {
+            // // 构造器函数 出现在不同实例上
+            // constructor(){
+            //     this.hasEngine = true;
+            // }
+            // // 出现在类的原型对象上
+            // identifyPrototype(id){
+            //     console.log(id, this)
+            // }
+            // // 出现在类的本身
+            // static identifyClass(id){
+            //     console.log(id, this)
+            // }
+            // 静态方法 通过super 调用继承方法
+            static identify(){
+                console.log('vehicle')
+            }
+        };
+        class Bus extends Vehicle{
+            // constructor(){
+            //     super();
+            //     console.log(this)
+            //     console.log(this instanceof Vehicle)
+            // }
+            static identify(){
+                super.identify();
+            }
+        };
+        Bus.identify()
+    </script>
+</body>
+</html>
