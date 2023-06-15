@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 概念 String 数据类型表示零或多个16位Unicode字符序列。 
+        // 命名方式 '' - "" - ``
+        // 注：以某种引号开头，就得以某种引号结束
+        // 1-字符子面量 - 在字符串中使用
+        let s = 'hello\nword'   // \n - 换行
+        let s1 = 'hello\tword' // \t - 制表 -- 加俩个空格 ？ chatgpt:将在 Hello 和 World! 之间创建了一段水平间距，使得它们在输出中对齐到下一个制表位。
+        let s2 = 'hello\bword' // \b - 退格  退格字符通常用于控制光标的位置，使其向左移动一个位置。当输出包含 \b 时，它会使光标在该位置上向左移动一格。
+        let s3 = 'hello\rword' // \r - 回车 
+        let s4 = 'hello\\word' // \\ - \
+        let s5 = 'hello\'word' // \' - ' 同理 ""``
+        let s6 = 'hello\x41word'  // \xnn 以十六进制nn表示的字符 \x41 - A  
+        let s7 = 'hello\u03a3word' // \unnnn 以十六进制nnnn表示的unicode字符
+        let str3 = "Hello, \"world\"!";
+        let text = 'helloword\u03ad'
+        console.log(text.length);//9
+        //2-字符串特点 不可变的 一旦创建，值就不能变，想要修改值，必须先销毁原始字符串，将新值的另一个字符串保存到改变量
+    </script>
+</body>
+</html>
