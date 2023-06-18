@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" id="box">
+        <div class="head" id="head"></div>
+        <div class="footer" id="footer"></div>
+    </div>
+    <header id="header">
+        <main id="main"></main>
+        <section id="section"></section>
+    </header>
+    <ul id="mylist">
+    </ul>
+    <div id="div"></div>
+    <script>
+        // 1-创建元素 - 1
+        let div = document.createElement('div')
+        div.id = 'div'
+        div.className = 'box1'
+        document.body.appendChild(div)
+        console.log(div);
+        // let items = ul.getElementsByTagName('li')
+        // console.log(items);
+        // 取得后代元素 ul.getElementsByTagName('li')
+        // 2-Text类型 纯文本 - 3 
+        // 创建文本节点createTextNode
+        let textNode = document.createTextNode('hello<strong>hello word</strong>word')
+        let element = document.createElement('div')
+        element.className = 'message'
+        document.body.appendChild(element)
+        element.appendChild(textNode)
+        //3-Comment类型 - 8
+        let comment = document.createComment('A comment');
+        document.body.appendChild(comment)
+        //4-CDDATASection - 4
+        //5-DocumentType - 10
+        // document.doctype
+        //6-DocumentFragment - 11
+        // demo
+        let fragment = document.createDocumentFragment();
+        let ul = document.getElementById("mylist")
+        for (let i = 0; i <3; ++i) {
+            let li = document.createElement('li')
+            li.appendChild(document.createTextNode(`item${i + 1}`))
+            fragment.appendChild(li)
+        }
+        // 如果文档中一个节点添加到文档片段也就是DocumentFragment，那么这个节点，浏览器就不会渲染了，
+        //添加到文档片段的新节点也不属于dom树
+        ul.appendChild(fragment)
+        // 文档片段永远不会添加到文档树
+        //7- Attr
+        let name = ul.getAttributeNode('id')
+        console.log(name);
+    </script>
+</body>
+</html>
