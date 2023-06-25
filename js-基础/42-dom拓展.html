@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <div id="box2" class="el-box current demo"></div>
+        <div id="box3" class="el-box"></div>
+        <button id="btns">获取焦点</button>
+        <div id="myDiv" data-appId="123456" data-myname="evanzhe"></div>
+    </div>
+    <script>
+        //  Selectors API level 1
+        // 1- querySelector 根据选择器 标签 id  class  选取元素
+        // let box = document.querySelector('#box')
+        // let body = document.querySelector('body')
+        // console.log(box);
+        // console.log(body);
+        // 2- querySelectorAll 返回的是nodelist 静态快照 并不是 实时的查询
+        // let box2 = document.querySelectorAll('div')
+        // console.log(box2);
+        // 3- mathes()  检测某个元素会不会被querySelector querySelectorAll包裹
+        // 4-元素遍历
+        let box = document.getElementById('box');
+        let currentChild = box.firstElementChild;
+        console.log(box);
+        console.log(currentChild);
+        //5-HTML5
+        //1.1-css类的扩展
+        // 根据类名获取元素
+        let boxS = document.getElementById('box2');
+        let box1 = document.getElementsByClassName('el-box');
+        // let target = 'demo'
+        // let className = boxS.className.split(/\s+/)
+        // let idx = className.indexOf(target)
+        // console.log(idx);
+        // if(idx > -1 ){
+        //     className.splice(2,1)
+        // }
+        // console.log(className);
+        // boxS.className = className
+        // 1.2 classList
+        //删除类
+        boxS.classList.remove('demo');
+        //添加类
+        boxS.classList.add('evan');
+        //有就删除 ，没有就添加
+        boxS.classList.toggle('demo');
+        //检测
+        //contains
+        // console.log(boxS.classList);
+        // for(let key of boxS.classList){
+        //     console.log(boxS.classList[key]);
+        // }
+        //
+        // 1.3焦点管理
+            let btns = document.getElementById('btns')
+            btns.focus();
+        //1.4 HTMLDocument
+        console.log(document.readyState);
+        //表示文档的状态
+        //loading 正在加载
+        //complete 表示文档加载完成
+        //1.5 head属性
+        // document.head 直接取到 head元素
+        //1.6 字符集
+        let characterSet = document.characterSet = 'utf-16'
+        console.log(characterSet);
+        //1.7自定义数据属性
+        let myDiv = document.getElementById('myDiv')
+        let appid = myDiv.dataset.appid;
+        let myname = myDiv.dataset.myname
+        console.log(appid, myname);
+        // 例如 vue 中 data-v-hash值
+        //1.8 插入标记
+        console.log(myDiv.children);
+        myDiv.innerHTML = 'hello<b>reader</b> word!'
+        console.log(myDiv.children[0]);
+        //1.9 替换当前使用outerHTML的元素 需要标签
+        // myDiv.outerHTML = '<p>this is paragrap</p>'
+        //2.0children 返回当前元素的子元素
+         
+    </script>
+</body>
+</html>

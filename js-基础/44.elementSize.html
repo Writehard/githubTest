@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box2 {
+             /*
+                怪异盒模型 width 会受到border pading的影响     
+            */
+            box-sizing: border-box;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+        #box1 {
+           /*
+           标准盒模型
+           */
+            box-sizing: content-box;
+            position: relative;
+            padding: 100px 100px;
+            width: 500px;
+            height: 500px;
+            border: 10px solid black;
+        }
+    </style>
+</head>
+<body>
+   <div id="box1">
+    <div id="box2"></div>
+   </div>
+    <script>
+        const box1 = document.getElementById('box1');
+        const box2 = document.getElementById('box2');
+        //父级元素的左侧-内侧 到 当前元素的左侧的距离 
+        console.log(box2.offsetLeft);
+        //可视高度
+        console.log(box2.offsetHeight);
+        //父级元素顶部内侧到当前元素的上方
+        console.log(box2.offsetTop);
+        //可视宽度
+        console.log(box2.offsetWidth);
+    </script>
+</body>
+</html>

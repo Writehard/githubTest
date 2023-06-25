@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-// W3C// DTD HTML 4.01// EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <iframe id="iframe"></iframe>
+    <script>
+        //1-Document的变化-和namespace有关
+        //创建一个新SVG元素
+        let svg = document.createElementNS("http://www.w3.org/2000/svg","svg")
+        //创建一个任意命名空间的新属性
+        let attr = document.createAttributeNS("http://www.somewhere.com","random")
+        //获取所有的xhml元素
+        let elems = document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml","*")
+        console.log(elems);
+        //2-Element的变化getAttributeNS系列
+        const div1 = document.getElementById("#div1");
+        //3-其他变化
+            //3.1-DocumentType的变化
+            console.log(document.doctype.publicId); //"-// W3C// DTD HTML 4.01// EN"
+            console.log(document.doctype.systemId); //EN" "http://www.w3.org/TR/html4/strict.dtd"
+        /*
+            4-Document的变化
+                1-importNode从其他文档复制节点
+                    a.参数 node boolean 第一个表示复制的节点 第二个表示是否复制子树
+        */
+        // let newNode = document.importNode(box,false)
+        // div1.appendChild(newNode)
+        // let doc = document.implementation.createDocument('','root',null)
+        // console.log(doc);
+        //创建xhtml文档
+        let doctype = document.implementation.createDocumentType('html',"-// W3C// DTD HTML 4.01// EN","http://www.w3.org/TR/html4/strict.dtd")
+        let doc = document.implementation.createDocument("http://www.w3.org/TR/html4/strict.dtd",'html',doctype)
+        console.log(doc);
+        /*
+            5-node变化
+                1-isSameNode 判断当前两个节点是否相等 isEqualNode 判断当前两个节点是否相同
+                2-给节点附加额外数据
+        */
+       let div2 = document.createElement('div')
+        div2.setAttribute('class','demo')
+        let div3 = document.createElement('div');
+        div3.setAttribute('class','demo')
+        console.log(div2.isSameNode(div2));
+        console.log(div2.isEqualNode(div3));
+        console.log(div2.isSameNode(div3));
+        
+    </script>
+</body>
+</html>
