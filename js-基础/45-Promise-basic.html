@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //例1
+        // let x = 3
+        // x = x + 4
+        let x = 3
+        setTimeout(()=>x = x+4,1000)
+        /*
+        回调地狱 -- 深层嵌套的回调函数
+         function double(value) {
+            setTimeout(()=> setTimeout(console.log,0,value*2),1000)
+        }
+        double(3)
+        1-异步返回值
+        function double(value,callback) {
+            setTimeout(()=> callback(value*2),1000)
+        }
+        double(3,(x)=>console.log(`i was given${x}`) )
+        */
+        /*
+        2-失败的处理
+        //函数 success failure
+        function double(value, success, failure) {
+            setTimeout(()=>{
+                try {
+                    if(typeof value !== "number"){
+                        throw `Must provid number as first argument`
+                    }
+                    success(value)
+                } catch (error) {
+                    failure(error)  
+                }
+            },1000)
+        }
+        const successCallback = (x)=>console.log(`Success: ${x}`)
+        const failureCallback = (e)=>console.log(`Failure: ${e}`)
+        double(3,successCallback,failureCallback)
+        double('b',successCallback,failureCallback)
+        */
+        /*
+        3-嵌套异步回调
+        function double(value, success, failure) {
+            setTimeout(()=>{
+                try {
+                    if(typeof value !== "number"){
+                        throw `Must provid number as first argument`
+                    }
+                    success(value)
+                } catch (error) {
+                    failure(error)  
+                }
+            },1000)
+        }
+        const successCallback = (x)=>{
+            double(x,(y)=>console.log(`Success: ${y}`))
+        }
+        const failureCallback = (e)=>console.log(`Failure: ${e}`)
+        double(3,successCallback,failureCallback)
+        */
+       /*
+        一、Promise
+            promise使用new操作符进行实例化，需要传递一个参数为执行器函数
+                let p = new Promise(()=>{}) //状态为pending
+                传入一个空函数对象应付解释器
+                setTimeout(console.log,0,p)
+                promise是一个有状态的对象 期约的状态是私有的,不能通过js直接检测到 ---期约的状态不能被外部js代码修改.
+                promise 故意把异步行为封装起来，从而隔离外部的代码
+                pengding  可以落定为两种状态 一旦落定是不可逆的
+       */
+       //rejected  
+       //成功的期约
+       //执行期函数的作用 初始化函数的异步行为 控制期约状态的最终转换 执行期函数是同步的
+       let successPromise = new Promise((reslove, reject)=>reslove())
+        //resolve fulffilled
+       //失败的期约
+       let failurePromise = new Promise((reslove, reject)=>reject())
+       //添加settimeout 推迟切换状态
+       let p = new Promise((resolve, reject)=>setTimeout(resolve(),1000))
+       //期约的状态一旦确定不能更改
+        let PromiseState = new Promise((reslove, reject)=>{
+            reslove()
+            reject() // 没有效果
+        })
+        //延迟promise的状态
+        let promiseF = new Promise((reslove, reject)=> {
+            setTimeout(reject, 10000)
+        })
+        // setTimeout(console.log, 0, promiseF)
+        // setTimeout(console.log, 11000, promiseF)
+        //初始化成功的期约
+        let successpromise = Promise.resolve(Promise.resolve(Promise.resolve()))
+        // let successPromise = new Promise((reslove, reject)=>reslove())两者是等价的
+        console.log(successpromise);
+        //这个静态方法可以保存promise 的状态
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p  = Promise.resolve(Promise.resolve(Promise.resolve()))
+        console.log(p);
+        //实例化一个拒绝的期约 并没有幂等的操作 传入的的promise会作为拒绝的理由
+        // let losePromise = Promise.reject(p)
+        try {
+            throw new Error('foo')
+        } catch (error) {
+            console.log(error);
+        }
+        try {
+            Promise.reject(new Error('baz'))
+        } catch (error) {
+           console.log(error);
+        }
+        //为promise实例添加事件处理程序 
+       // Promise.prototype.then
+       //then()最多接受两个参数 onResolved处理程序 onResolved处理程序 将给函数类型的参数传递给then都会静默忽略
+         function onResolved(id) {
+            setTimeout(console.log, 0, id, 'resolved')
+         }
+         function onRejected(id) {
+            setTimeout(console.log, 0, id, 'reject')
+         }
+
+         let p1 = new Promise((reslove, reject)=> {
+            setTimeout(reslove, 3000)
+         })
+         let p2 = new Promise((resolve, reject)=> {
+            setTimeout(reject, 3000)
+         })
+        //  p1.then(()=>onResolved('p1'),
+        //          ()=>onRejected('p1'))
+        //  p2.then(()=>onResolved('p2'),
+        //          ()=>onRejected('p2'))
+         //简化一下 没问题 ()=>{}也没问题 符合规范的写法是
+         p1.then(()=>onResolved('p1'))
+        //  p2.then(()=>{}, ()=>onRejected('p2'))
+         p2.then(null, ()=>onRejected('p2'))
+         //Promise.prototype.then 返回一个新的期约实例
+         let p3 = new Promise(()=>{})
+         let p4 = p3.then();
+         console.log(p3, p4);
+         console.log(p3 === p4);
+         let p5 = Promise.resolve('foo')
+         let p6 = p5.then()
+         console.log(p6);
+         
+    </script>
+</body>
+</html>
