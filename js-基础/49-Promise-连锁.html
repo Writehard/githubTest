@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1-期约的连锁
+        // let p = new Promise((reslove, reject)=> {
+        //     console.log('first');
+        //     reslove()
+        // })
+        // p.then(()=> console.log('first-2'))
+        //  .then(()=> console.log('second'))
+        //  .then(()=> console.log('third'))
+        //以上代码同步也能做到
+        // (()=> console.log('first'))();
+        // (()=> console.log('second'))();
+        // (()=> console.log('thirt'))();
+        // (()=> console.log('fofth'))();
+        //2-期约的异步连锁
+        // let p1 = new Promise((reslove, reject)=> {
+        //     console.log('first p1')
+        //     setTimeout(reslove, 1000)
+        // })
+        // p1.then(()=> new Promise((reslove, reject)=> {
+        //     console.log('second p2')
+        //     setTimeout(reslove, 1000)
+        // }))
+        //     .then(()=> new Promise((reslove, reject)=> {
+        //     console.log('third p3')
+        //     setTimeout(reslove, 1000)
+        // })) 
+        //     .then(()=> new Promise((reslove, reject)=> {
+        //     console.log('forth p4')
+        //     setTimeout(reslove, 1000)
+        // }))
+        //简化- 优化代码
+        // function delayedResloved(str) {
+        //     return new Promise((reslove, reject)=> {
+        //         console.log(str);
+        //         setTimeout(reslove, 1000)
+        //     })
+        // }
+        // delayedResloved('first p1-fun')
+        // .then(()=>delayedResloved('second p2-fun'))
+        // .then(()=>delayedResloved('third p3-fun'))
+        // .then(()=>delayedResloved('fourth p4-fun'))
+        
+        // function delayedExe(str, callback = null) {
+        //     setTimeout(()=> {
+        //         console.log(str)
+        //         callback && callback()
+        //     } ,1000)
+        // }
+        //回调地狱问题
+        // delayedExe('p1 callback', ()=> {
+        //     delayedExe('p2 callback', ()=> {
+        //         delayedExe('p3 callback', ()=> {
+        //             delayedExe('p4 callback')
+        //         })
+        //     })
+        // })
+        // let p = new Promise((reslove, reject)=> {
+        //     console.log('promise init');
+        //     reject()
+        // })
+        // p.catch(()=> console.log('reject handle'))
+        //  .then(()=> console.log('then handle'))
+        //  .finally(()=> console.log('in finally'))
+         //期约构建二叉树
+        //      A
+        //     / \
+        //    B   C
+        //   / \  / \
+        //  D   E F  G 
+        let A = new Promise((resolve,reject)=> {
+            console.log('A')
+            resolve()
+        })
+        let B = A.then(()=> console.log('B'))
+        let C = A.then(()=> console.log('C'))
+        B.then(()=> console.log('D'))
+        B.then(()=> console.log('E'))
+        C.then(()=> console.log('F'))
+        C.then(()=> console.log('G'))
+    </script>
+</body>
+</html>

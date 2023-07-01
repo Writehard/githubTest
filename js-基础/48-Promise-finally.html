@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p = Promise.resolve()
+        let p2 = p.finally()
+        let p3 = p.finally(()=> undefined)
+        let p4 = p.finally(()=> {})
+        let p5 = p.finally(()=> Promise.resolve())
+        let p6 = p.finally(()=> 'baz')
+        let p7 = p.finally(()=> Promise.resolve('bar'))
+        let p8 = p.finally(()=> Error('qux'))
+        // setTimeout(console.log, 0, p2)
+        // setTimeout(console.log, 0, p3)
+        // setTimeout(console.log, 0, p4)
+        // setTimeout(console.log, 0, p5)
+        // setTimeout(console.log, 0, p6)
+        // setTimeout(console.log, 0, p7)
+        // setTimeout(console.log, 0, p8)
+        //传递值和拒绝的理由
+        let p9 = Promise.resolve('foo')
+        let p10 = Promise.reject(200)
+        // p9.then((val) => console.log(val))
+        // p10.catch( (val)=> console.log(val))
+        //拒绝期约
+        let p11 = new Promise((resolve, reject)=> reject(Error('失败的期约')))
+        let p12 = new Promise(()=> { throw Error('foo')})
+        let p13 = Promise.resolve().then(()=> { throw Error('foo')})
+        let p14 = Promise.reject(Error('foo'))
+        // setTimeout(console.log, 0, p11)
+        // setTimeout(console.log, 0, p12)
+        // setTimeout(console.log, 0, p13)
+        // setTimeout(console.log, 0, p14)
+        // throw Error('foo')
+        // console.log('error')
+        // Promise.reject(Error('zoz'))
+        // console.log("zoz");
+        // Promise.reject(Error('evanzhe')).catch((e)=>console.log(e) )
+        try {
+            Promise.reject(Error('err'))
+        } catch (error) {
+            console.log(error)
+        }
+        let p1 = new Promise((resolve,reject)=>{
+            try {
+                throw Error("bar")
+            } catch (error) {
+                console.log(error);
+                resolve('baz')
+            }
+        })
+        setTimeout(console.log, 0, p1)
+        //同步错误处理
+        console.log('begin');
+        try {
+            throw Error('err')
+        } catch (error) {
+            console.log('the err:'+ error)
+        }
+        console.log('over')
+        //异步错误处理
+        new Promise((resolve, reject) => {
+            console.log('begin promise')
+            reject(Error('promise err'))
+        }).catch((e)=>{console.log('error:'+ e)}).then(()=>{console.log('over promise')})
+    </script>
+</body>
+</html>

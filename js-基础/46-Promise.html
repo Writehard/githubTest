@@ -7,6 +7,7 @@
 </head>
 <body>
     <script>
+        //这个静态方法可以保存promise 的状态
         let p  = Promise.resolve(Promise.resolve(Promise.resolve()))
         console.log(p);
         //实例化一个拒绝的期约 并没有幂等的操作 传入的的promise会作为拒绝的理由

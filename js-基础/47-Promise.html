@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Promise.prototype.catch
+        let p = new Promise((reslove, reject)=> reject())
+        //then为期约添加处理程序
+        p.then(()=>console.log('成功的promise'), ()=> {
+            console.log('失败的promise');
+        })
+
+       p.catch(()=>console.log('失败的promise')) 
+        console.log(p);
+        let p1 = new Promise(()=> {})
+        let p2 = p1.then()
+        //尽量使用settimeout来打印
+        // console.log(p1);
+        // console.log(p2);
+        setTimeout(console.log, 0, p1)
+        setTimeout(console.log, 0, p2)
+        setTimeout(console.log, 0, p1 === p2)
+        //成功的promise
+        let p3 = Promise.resolve('foo')
+        let p4 = p3.then()
+        setTimeout(console.log, 0, p4)
+        let p5 = p3.then(()=> undefined)
+        let p6 = p3.then(()=> {})
+        let p7 = p3.then(()=> Promise.resolve())
+        setTimeout(console.log, 0, p5)
+        setTimeout(console.log, 0, p6)
+        setTimeout(console.log, 0, p7)
+        let p8 = p3.then(()=> 'baz')
+        let p9 = p3.then(()=> Promise.resolve('baz'))
+        setTimeout(console.log, 0, p8)
+        setTimeout(console.log, 0, p9)
+        //以上都是一样的
+        let p10 = p3.then(() => new Promise(()=> {}))
+        let p11 = p3.then(()=> Promise.reject('failtrue'))
+        setTimeout(console.log, 0, p10)
+        setTimeout(console.log, 0, p11)
+        //尝试跑出错误会创建失败的promise
+        let p12 = p3.then(()=> {throw 'baz'})
+        setTimeout(console.log, 0, p12)
+        let p13 = p3.then(()=> Error('qux'))
+        setTimeout(console.log, 0, p13)
+        //失败的期约promise
+        let p14 = Promise.reject('foo')
+        let p15 = p14.then()
+        setTimeout(console.log, 0, p15)
+        //添加处理程序
+        let p16 =  p14.then(null, ()=> undefined)
+        let p17 =  p14.then(null, ()=> {})
+        let p18 =  p14.then(null, ()=> Promise.resolve())
+        setTimeout(console.log, 0, p16)
+        setTimeout(console.log, 0, p17)
+        setTimeout(console.log, 0, p18)
+        // Promise.prototype.catch
+        // P.then(null, ()=>{})等价
+        let p19 = p3.catch(()=> undefined)
+        setTimeout(console.log, 0, p19)
+        // Promise.prototype.finally 无论promise是失败还是成功都会执行
+        let p20 = Promise.resolve()
+        let p21 = Promise.reject()
+        let onFinaly = function () {
+            setTimeout(console.log, 0, 'Finaly')
+        };
+        p20.finally(onFinaly)
+        p21.finally(onFinaly)
+        
+    </script>
+</body>
+</html>
