@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+             Promise.all 接受一个可迭代的对象
+        */
+        let p = Promise.all([
+            Promise.resolve(),
+            Promise.resolve()
+        ])
+        //可迭代元素通过promise.reslove()转换企业
+        let p1 = Promise.all([3, 4])
+        let p2 = Promise.all([])
+        //无效语法
+        let p3 = Promise.all().catch(e=>console.log(e) )
+        //合成期约只会在每个包含期约都解决之后才解决
+        let p4 = Promise.all([Promise.resolve(), new Promise((reslove, reject)=> {
+            setTimeout(reslove, 1000)
+        })])
+        
+        p4.then(() => setTimeout(console.log, 0, 'all reslove'))
+        setTimeout(console.log, 0, p4)
+        //如果至少有一个包含的期约待定， 则合成的期约也会待定。如果有一个包含拒绝期约, 合成期约也会被拒绝
+        let p5 = Promise.all([new Promise((resolve, reject) => {
+        }),])
+        setTimeout(console.log, 0, p5)
+        let p6 = new Promise((resolve, reject) => {
+            console.log('evanzhe')
+            resolve()
+        })
+        //success
+        let p7 = Promise.resolve(1)
+        let p8 = Promise.resolve(2)
+        let p9 = Promise.resolve(3)
+        let p10 = Promise.all([p7, p8, p9])
+        p10.then((value) => console.log(value))
+        //failure
+        let p11 = Promise.reject('3')
+        let p12 = new Promise((reslove, reject)=> setTimeout(reject, 1000))
+        let p13 = Promise.all([p11, p12])
+        console.log(p13);
+        p13.catch(e => console.log(e))
+    </script>
+</body>
+</html>

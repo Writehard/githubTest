@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function resolve() {
+            return ()=> {
+                return 'evanzhe-success'
+            }
+        }
+        function reject() {
+            return ()=> {
+                return 'evanzhe reject'
+            }
+        }
+        console.log(resolve());
+    </script>
+    <!-- <script>
+        let p = Promise.race([
+            Promise.resolve(),
+            Promise.resolve()
+        ])
+        setTimeout(console.log, 0, p)
+        let p1 = Promise.race([1 ,2])
+        setTimeout(console.log, 0, p1)
+        let p2 = Promise.race([])
+        setTimeout(console.log, 0, p2)
+        //race取决于第一个期约不会对成功和失败区别对待
+        let p3 = Promise.race([
+            Promise.resolve(3),
+            //解决先发生的 - 超时后的拒绝会被忽略的
+            new Promise((resolve, reject)=> setTimeout(reject, 1000))
+        ])
+        setTimeout(console.log, 0, p3)
+        let p4 = Promise.race([
+            Promise.reject(3),
+            //拒绝先发生的 超时后的拒绝会被忽略的
+            new Promise((resolve, reject)=> setTimeout(reject, 1000))
+        ])
+        setTimeout(console.log, 0, p3)
+    </script> -->
+</body>
+</html>
