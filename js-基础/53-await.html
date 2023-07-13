@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            //异步函数主要针对不会马上完成的任务， 所以自然需要一种暂停和恢复执行的能力，
+            // 使用await可以暂停异步函数代码的执行，等待期约的解决。
+            // let p = new Promise((resolve, reject) => {
+            // setTimeout(resolve, 1000, 3)
+            // })
+            // p.then(val=> console.log(val))
+            //await
+            // async function foo() {
+            //     let p = new Promise((resolve, reject) => setTimeout(resolve, 1000, 3))
+            //     console.log(await p)
+            // }
+            // foo()
+            //单独使用async 和 async 和 await一起使用
+            //区别
+            // async function baz() {
+            //     console.log(1);
+            //     await Promise.reject(3)
+            // }
+            // baz().catch(console.log);
+            // console.log(2)
+            //停止和恢复执行
+            // async function foo() {
+            //     console.log(await Promise.resolve('foo'))
+            // }
+
+            // async function bar() {
+            //     console.log(await 'bar')
+            // }
+
+            // async function baz() {
+            //     console.log('baz')
+            // }
+            // foo()
+            // bar()
+            // baz()
+            //异步函数的策略
+            // 实现sleep
+            // async function sleep(delay) {
+            //     return new Promise((resolve, reject) => {
+            //         setTimeout(resolve, delay)
+            //     })
+            // }
+            // async function foo() {
+            //     //当前时间戳
+            //     const now = Date.now()
+            //     await sleep(1500)
+            //     console.log(Date.now()- now)
+            // }
+            // foo()
+            //平行执行
+            async function randomDelay(id) {
+                //延迟0-1000毫秒
+                const delay = Math.random() * 1000;
+                return new Promise((resolve, reject) => {
+                    setTimeout(
+                       ()=> {
+                        console.log(`${id} finished`)
+                        resolve(id)
+                       }, delay
+                    )
+                })
+            }
+            // async function bar() {
+            //     const t0 = Date.now();
+            //     await randomDelay(0);
+            //     await randomDelay(1);
+            //     await randomDelay(2);
+            //     await randomDelay(3);
+            //     await randomDelay(4);
+            //     console.log(`${Date.now() - t0}ms elapsed`)
+            // }
+            // bar();
+            //for重写
+            // async function baz() {
+            //     const t0 = Date.now();
+            //    for (let i = 0; i < 5; ++i) {
+            //         await randomDelay(i)
+            //    }
+            //     console.log(`${Date.now() - t0}ms elapsed`)
+            // }
+            // baz();
+            //以上的期约之间虽然没有依赖， 异步函数也会依次执行。等待每个超时任务的完成。这样可以保证执行顺序，但总执行时间会变长
+            //那就不保证顺序了， 一次性初始化所有的期约，然后再分别等待它们的结果
+
+            // async function qux() {
+            //     //存在无序的问题
+            //     const t0 = Date.now();
+            //    const p0 = randomDelay(0)
+            //    const p1 = randomDelay(1)
+            //    const p2 = randomDelay(2)
+            //    const p3 = randomDelay(3)
+            //    const p4 = randomDelay(4)
+            //    await p0
+            //    await p1
+            //    await p2
+            //    await p3
+            //    await p4
+            //    setTimeout(console.log, 0, `${Date.now() -t0 }`) 
+            // }
+            //使用数组和for 包装一下
+            // async function fun() {
+                //解决了无序的问题
+                //_为占位符
+            //     const t0 = Date.now();
+            //     const promises = Array(5).fill(null).map((_, i) => randomDelay(i) ) 
+            //     console.log(promises);
+            //     for(const p of promises){
+            //         await p
+            //     }
+            //     console.log(`fun ${Date.now() -t0 }ms elapsed`)
+            // }
+            // async function foo() {
+            //     const t0 = Date.now();
+            //     const promises = Array(5).fill(null).map((_, i) => randomDelay(i) ) 
+            //     console.log(promises);
+            //     for(const p of promises){
+            //         console.log(`awaited ${await p}`);
+            //     }
+            //     console.log(`foo ${Date.now() -t0 }ms elapsed`)
+            // }
+            // foo()
+            //栈追踪和内存管理
+            function fooPromiseExecutor(reslove, reject) {
+                setTimeout(reject, 1000, 'bar')
+            }
+            // function foo() {
+            //     new Promise(fooPromiseExecutor)
+            // }
+            async function foo() {
+                await new Promise(fooPromiseExecutor)
+            }
+            foo()
+        </script>
+</body>
+</html>

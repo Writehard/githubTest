@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="background-color: blue;width: 200px; height: 200px; border: 1px soli black;"></div>
+    <div id="box2"></div>
+   <script>
+        let box = document.getElementById('box')
+        //style对象 -csstext
+        //item(index)
+        box.style.backgroundColor = '#f00' 
+        box.style.width = '200px'
+        box.style.height = '200px'
+        box.style.border = '5px solid black'
+        for(let i = 0, len = box.style.length; i < len; i++){
+            // console.log(box.style[i]);
+            console.log(box.style.item(i));
+        }
+        // getPropertyValue 被删除
+        // let prop, value, i, len;
+        // for(i = 0, len = box.style.length; i < len; i++){
+        //     prop = box.style[i];
+        //     value = box.style.getPropertyValue(prop);
+        //     console.log(`prop: ${value}`);
+        // }
+        //删除属性
+        box.style.removeProperty('border')
+        let computedStyle = document.defaultView.getComputedStyle(box)
+        console.log(box.style.cssText);
+        let sheet = document.styleSheets[0]
+        let rules = sheet.cssRules || sheet.rules
+        let rule = rules[0]
+        console.log(rule.style.backgroundColor)
+        console.log(document.links);
+    </script>
+</body>
+</html>

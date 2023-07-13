@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         let observer = new MutationObserver((mutationRecoeds)=>{
+            console.log(mutationRecoeds)
+        })
+        document.body.firstChild.textContent = 'evan'
+        //characterDataOldValue 记录修改之前的值  characterData 监测子节点的变化
+        observer.observe(document.body.firstChild, {characterData:true}) 
+        document.body.firstChild.textContent = 'evan'
+        document.body.firstChild.textContent = 'zhe'
+        document.body.firstChild.textContent = 'zhe'
+        
+    </script>
+</body>
+</html>

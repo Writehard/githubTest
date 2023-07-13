@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //浏览器的环境下 全局是window node环境下是global
+        let pageHeight = window.innerHeight,
+            pageWidth = window.innerWidth
+        console.log(pageHeight, pageWidth);
+        //重定向的作用
+        // window.open('http://www.baidu.com', '_blank')
+        //定时器
+        // setTimeout
+        //循环定时器
+        // setInterval
+        //系统对话框
+        // alert警告框
+        //confirm确认框
+        //prompt输入框
+        //location对象
+        //查询参数字符串
+        let url =  'http://user:password@example.com:8080/path/to/page.html?query=string#ref'
+        let getQueryStringArgs = function(url){
+            args = {}
+            for(let item of url.split('&').map(kv=> kv.split('='))){
+                let name = decodeURIComponent(item[0]),
+                    value = decodeURIComponent(item[1])
+                    if(name.length){
+                        args[name] = value
+                    }
+            }
+            return args
+        }
+        //url相关的
+       console.log(location)
+       //navigator 浏览器相关信息
+       console.log(navigator.userAgent);
+    </script>
+</body>
+
+</html>

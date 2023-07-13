@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //回调函数是异步执行的
+        let observer = new MutationObserver((mutationRecoeds)=>{
+            console.log(mutationRecoeds)
+        })
+        //观察元素
+        //{attributes:true,}观察所有属性 attributeFilter设置白名单 attributeOldValue保存原来属性的值
+        // observer.observe(document.body, {attributeFilter:['foo']})
+        // //添加白名单属性
+        // document.body.setAttribute('foo', 'bar')
+        // //添加被排除的属性
+        // document.body.setAttribute('baz', 'zhe')
+        // document.body.removeAttribute('foo')
+        observer.observe(document.body, {attributeOldValue:true})
+        document.body.setAttribute('baz', 'bar')
+        document.body.setAttribute('baz', 'foo')
+        document.body.setAttribute('baz', 'evan')
+      
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1-async 让函数具有异步的特征， 但是总体上来说代码是同步执行的，异步函数仍然具有普通javascript函数的正常行为
+        // async function foo() {
+        //     console.log(1);
+        // }
+        // const fun = async()=> {}
+        // const bar = async function(){}
+        // class Qux {
+        //     async name(){}
+        // }
+        // foo()
+        // console.log(2);
+        //2-如果一个async包裹的函数，函数体中的代码是同步执行的 函数的返回值会被promise.reslove()包装成一个期约对象
+        // async function fun() {
+        //     console.log(1)
+        // }
+        // fun().then(console.log)
+        // console.log(2);
+        //返回值为一个期约对象
+        // async function fn() {
+        //     console.log(1)
+        //     return Promise.resolve(3)
+        // }
+        // fn().then(console.log)
+        // console.log(2)
+        //异步函数期待一个实现thenable的对象，常规的值也可以，如果返回的是实现的thenable接口的对象，则这个对象可以提供给then的处理程序解包
+        // async function fun() {
+        //     return ['bar']
+        // }
+        // fun().then(console.log)
+        //返回一实现thenable的对象
+        // async function baz() {
+        //     const thenable = {
+        //         then(callback) {
+        //             callback('baz')
+        //         }
+        //     }
+        //     return thenable
+        // }
+        // baz().then(console.log)
+        //拒绝
+        // async function qux() {
+        //     console.log(1);
+        //     throw 3
+        // }
+        // qux().catch(console.log)
+        // console.log(2)
+        //拒绝期约的错误不会被捕获
+        async function foo() {
+            console.log(1);
+             Promise.reject(3)
+         }
+        //  拒绝的期约不会被捕获的
+         foo().catch(console.log)
+         console.log(2);
+    </script>
+</body>
+</html>

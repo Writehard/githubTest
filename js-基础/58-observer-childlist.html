@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //清空主体
+        document.body.innerHTML ='' 
+        let observer = new MutationObserver((mutationRecoeds)=>{
+            console.log(mutationRecoeds)
+        })
+        //观察子节点
+        //移除子节点
+        document.body.appendChild(document.createElement('div'))
+        document.body.appendChild(document.createElement('span'))
+
+        observer.observe(document.body, {childList:true})
+        document.body.insertBefore(document.body.lastChild, document.body.firstChild)
+        //观察子树
+        //每次变化的信息交给mutationRecoeds实例， 然后被添加到记录队列中
+    </script> 
+</body>
+</html>
