@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // window.addEventListener('load', ()=>{
+        //     let img = document.createElement('img');
+        //     img.addEventListener('load', (event)=>{
+        //         console.log(event.target.src)
+        //     })
+        //     document.body.appendChild(img)
+        //     img.src = './assets/IMG_1207.JPG'
+        // })
+
+    </script>
+</head>
+<body>
+    <ul id="myLinks">
+        <li id="gowhere">Go somewhere</li>
+        <li id="dothing">Do something</li>
+        <li id="sayh">hi</li>
+    </ul>
+    
+  <script>
+    //过多事件的处理程序的解决方案事件委托
+    let list = document.getElementById('myLinks');
+    list.addEventListener('click', (event)=>{
+        let target = event.target;
+        switch(target.id){
+            case 'gowhere':
+                document.title = 'china'
+                break;
+            case 'dothing':
+                location.href = 'http://www.baidu.com'
+                break;
+            case 'sayh':
+                console.log('hi');
+                break;
+        }
+    })
+  </script>
+</body>
+</html>

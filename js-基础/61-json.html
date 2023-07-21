@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let person = {
+            work:'software',
+            name:'zhe',
+            age:19,
+            switch:true,
+            authors:['evanzhe', 'johnwick'],
+            edtion:4
+        }
+        /*
+        1-把js对象序列化为一个json字符串
+        let jsonText = JSON.stringify(person);
+        2-将json字符串反序列化为对象 
+        let text = JSON.parse(jsonText)
+        console.log(text)
+        */
+        //序列化选项
+        //1-第二个参数传递为一个数组时，返回的json的字符串只包含数组中的内容
+        let jsonP = JSON.stringify(person, ['work', 'edtion'])
+        //2-第二个参数为一个函数时, 接收两个参数 key value 
+        let book = {
+            title:'professional javascript',
+            authors:[
+                'evan',
+                'john'
+            ],
+            edition:4,
+            years:2023
+        }
+        //3-第三个参数表示每一级的缩进数
+        let jsonbook = JSON.stringify(book, (key, value)=>{
+            switch(key) {
+                case 'authors':
+                    return value.join(',')
+                case 'year':
+                    return 5000;
+                case 'edition':
+                    return undefined;
+                default:
+                    return value
+            }
+        }, 4)
+        // tojson方法 可以和过滤函数一起使用
+        let notebook = {
+            title:'professional javascript',
+            authors:[
+                'evan',
+                'john'
+            ],
+            edition:4,
+            years:2023,
+            toJSON:function(){
+                return this.title
+            }
+        }
+        let josnnote = JSON.stringify(notebook)
+        console.log(josnnote)
+    </script>
+</body>
+</html>

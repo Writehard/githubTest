@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <a href="http://www.baidu.com" id="link" target="_blank">百度</a>
+    <script>
+        //取消事件的捕获和冒泡
+          btn.onclick = function (event) {
+            console.log(event.eventPhase,'clicked-btn')
+        }
+        document.body.onclick = function (event) {
+            console.log(event.eventPhase,'body click')
+
+        }
+        /* 第一种
+        <button id="btn" onclick="alert('html添加事件处理程序')">点击</button>
+            第二种
+            DOM0
+        let btn = document.getElementById('btn')
+        btn.onclick = function () {
+            alert('DOM0添加事件处理程序')
+        };
+        移除事件
+        btn.onclick = null
+        第三种
+        DOM2 addEventListener 传递三个参数 事件名 事件处理程序 一个布尔值
+        let handle = function(){
+            console.log()
+            console.log('handle-event')
+        }   
+    
+        btn.addEventListener('click', handle, false)
+        移除事件 必须和addEventListener事件处理程序一致
+        失败
+        btn.removeEventListener('click', function(){
+            alert('DOM2的事件处理程序')
+        })
+        移除事件 保证和addEventListener事件处理程序一致
+        btn.removeEventListener('click', handle, false)
+        btn.addEventListener('click', (event)=>{
+            console.log(event.eventPhase)
+        }, false)
+        q
+      
+        绑定多个事件
+        let handle = function (event) {
+            switch(event.type) {
+                case "click":
+                    console.log('clicked');
+                break;
+                case "mouserover":
+                    event.target.style.backgroundColor = "red";
+                break;
+                case "mouseout":
+                    event.target.style.backgroundColor = "";
+                break;
+            }
+        };
+        btn.onclick = handle;
+        btn.onmousemove = handle;
+        btn.onmouseout = handle;
+        阻止事件默认行为
+        let link = document.getElementById('link')
+        link.onclick =  function(event){
+            event.preventDefault()
+        }
+        */
+    </script>
+</body>
+</html>
